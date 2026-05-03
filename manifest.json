@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "AutoAlt — BYOK Alt Text for Bluesky",
-  "version": "0.1.0",
-  "description": "Generate alt text from images using your own AI key (OpenAI, Anthropic, Google, or Ollama). Auto-fills the Bluesky alt text field.",
+  "name": "AutoAlt - Alt Text for bsky.app",
+  "version": "0.2.0",
+  "description": "Generate alt text from images using your own AI key (OpenAI, Anthropic, Google, or Ollama). Auto-fills the alt text field on bsky.app.",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -33,7 +33,7 @@
       "run_at": "document_idle"
     }
   ],
-  "permissions": ["storage", "activeTab"],
+  "permissions": ["storage"],
   "host_permissions": [
     "https://api.openai.com/*",
     "https://api.anthropic.com/*",
