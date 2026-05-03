@@ -1,0 +1,58 @@
+.autoalt-btn {
+  position: absolute;
+  top: 44px;
+  left: 8px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(15, 20, 25, 0.85);
+  color: #fff;
+  font: 600 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+
+/* When anchored next to Bluesky's +ALT button, sit inline beside it
+   in the top-left cluster — out of the way of the top-right edit/X. */
+.autoalt-btn.autoalt-btn--inline {
+  position: absolute;
+  top: 8px;
+  left: 78px;
+}
+
+.autoalt-btn:hover {
+  background: rgba(32, 130, 255, 0.95);
+  transform: translateY(-1px);
+}
+
+.autoalt-btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.autoalt-glyph {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.autoalt-label {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.autoalt-status {
+  margin-left: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.autoalt-status[data-kind="error"] {
+  color: #ffb4b4;
+}

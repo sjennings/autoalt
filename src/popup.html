@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AutoAlt</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body {
+        margin: 0;
+        width: 280px;
+        padding: 16px;
+        font: 13px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: Canvas;
+        color: CanvasText;
+      }
+      h1 { margin: 0 0 4px; font-size: 15px; }
+      p.tag { margin: 0 0 12px; opacity: 0.7; font-size: 12px; }
+      .row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+      .row span:first-child { opacity: 0.7; font-size: 12px; }
+      .pill {
+        font-size: 11px; font-weight: 700;
+        padding: 2px 8px; border-radius: 999px;
+        background: #2082ff; color: #fff;
+      }
+      .pill.warn { background: #c1331a; }
+      hr { border: none; border-top: 1px solid color-mix(in srgb, CanvasText 12%, transparent); margin: 12px 0; }
+      button {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid color-mix(in srgb, CanvasText 18%, transparent);
+        background: transparent;
+        color: inherit;
+        border-radius: 8px;
+        cursor: pointer;
+        font: inherit;
+        margin-top: 6px;
+      }
+      button.primary {
+        background: #2082ff;
+        color: #fff;
+        border-color: transparent;
+        font-weight: 600;
+      }
+      button:hover { filter: brightness(1.05); }
+      a { color: #2082ff; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+    </style>
+  </head>
+  <body>
+    <h1>AutoAlt</h1>
+    <p class="tag">BYOK alt text for Bluesky.</p>
+    <div class="row">
+      <span>Provider</span>
+      <span class="pill" id="provider-pill">…</span>
+    </div>
+    <div class="row">
+      <span>Status</span>
+      <span class="pill" id="status-pill">…</span>
+    </div>
+    <hr />
+    <button class="primary" id="open-options">Settings</button>
+    <button id="open-bsky">Open Bluesky</button>
+    <script src="popup.js"></script>
+  </body>
+</html>

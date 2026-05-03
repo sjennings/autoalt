@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AutoAlt — Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>AutoAlt</h1>
+        <p class="tag">BYOK alt-text generator for Bluesky</p>
+      </header>
+
+      <section class="card">
+        <label class="row">
+          <span>Provider</span>
+          <select id="provider">
+            <option value="openai">OpenAI</option>
+            <option value="anthropic">Anthropic</option>
+            <option value="google">Google (Gemini)</option>
+            <option value="ollama">Ollama (local)</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="card provider-pane" data-provider="openai">
+        <h2>OpenAI</h2>
+        <label class="row">
+          <span>API key</span>
+          <input id="openai-key" type="password" autocomplete="off" placeholder="sk-..." />
+        </label>
+        <label class="row">
+          <span>Model</span>
+          <input id="openai-model" type="text" placeholder="gpt-5.4-nano" />
+        </label>
+        <p class="hint">
+          Get a key at <a href="https://platform.openai.com/api-keys" target="_blank" rel="noreferrer">platform.openai.com/api-keys</a>.
+          Suggested: <code>gpt-5.4-nano</code> (cheap), <code>gpt-5-mini</code> (better OCR).
+        </p>
+      </section>
+
+      <section class="card provider-pane" data-provider="anthropic">
+        <h2>Anthropic</h2>
+        <label class="row">
+          <span>API key</span>
+          <input id="anthropic-key" type="password" autocomplete="off" placeholder="sk-ant-..." />
+        </label>
+        <label class="row">
+          <span>Model</span>
+          <input id="anthropic-model" type="text" placeholder="claude-haiku-4-5" />
+        </label>
+        <p class="hint">
+          Get a key at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noreferrer">console.anthropic.com</a>.
+          Suggested: <code>claude-haiku-4-5</code> (fast, excellent OCR).
+        </p>
+      </section>
+
+      <section class="card provider-pane" data-provider="google">
+        <h2>Google (Gemini)</h2>
+        <label class="row">
+          <span>API key</span>
+          <input id="google-key" type="password" autocomplete="off" placeholder="AIza..." />
+        </label>
+        <label class="row">
+          <span>Model</span>
+          <input id="google-model" type="text" placeholder="gemini-3.1-flash-lite-preview" />
+        </label>
+        <p class="hint">
+          Get a key at <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noreferrer">aistudio.google.com</a>.
+          Suggested: <code>gemini-3.1-flash-lite-preview</code> (cheapest, fast).
+        </p>
+      </section>
+
+      <section class="card provider-pane" data-provider="ollama">
+        <h2>Ollama (local)</h2>
+        <label class="row">
+          <span>Endpoint</span>
+          <input id="ollama-endpoint" type="text" placeholder="http://localhost:11434" />
+        </label>
+        <label class="row">
+          <span>Model</span>
+          <input id="ollama-model" type="text" placeholder="gemma4:e2b" />
+        </label>
+        <p class="hint">
+          Run a vision model first: <code>ollama pull gemma4:e2b</code> (or
+          <code>qwen2-vl</code>, <code>llava</code>, <code>llama3.2-vision</code>). Start Ollama with extension origin allowed:<br />
+          <code>OLLAMA_ORIGINS=chrome-extension://* ollama serve</code>
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Prompt</h2>
+        <p class="hint">
+          The instruction sent to the model alongside the image. Tweak this if you
+          want different style — e.g. shorter output, different language, transcription only.
+        </p>
+        <textarea id="prompt" rows="6"></textarea>
+        <button type="button" id="reset-prompt" class="ghost">Reset to default</button>
+      </section>
+
+      <section class="card">
+        <label class="row checkbox-row">
+          <input id="attribution" type="checkbox" />
+          <span>I choose violence.</span>
+        </label>
+      </section>
+
+      <footer class="actions">
+        <button type="button" id="save" class="primary">Save settings</button>
+        <span id="status" aria-live="polite"></span>
+      </footer>
+    </main>
+    <script src="options.js"></script>
+  </body>
+</html>
