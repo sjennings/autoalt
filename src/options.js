@@ -4,7 +4,7 @@ const DEFAULT_PROMPT =
   "transcribe ALL of that text verbatim. If there is no text, write a concise, " +
   "vivid description of the image suitable for a screen reader. " +
   "Output only the alt text itself — no preamble, no quotes, no markdown. " +
-  "Keep it under 1000 characters.";
+  "Keep it under 2000 characters.";
 
 const els = {
   provider: document.getElementById("provider"),

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "AutoAlt - Alt Text for bsky.app",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Generate alt text from images using your own AI key (OpenAI, Anthropic, Google, or Ollama). Auto-fills the alt text field on bsky.app.",
   "icons": {
     "16": "icons/icon16.png",

@@ -15,7 +15,7 @@ export async function generateAltText({ apiKey, model, prompt, imageBase64, mime
           ],
         },
       ],
-      generationConfig: { maxOutputTokens: 600, temperature: 0.2 },
+      generationConfig: { maxOutputTokens: 800, temperature: 0.2 },
     }),
   });
   if (!res.ok) {

@@ -9,7 +9,7 @@ export async function generateAltText({ apiKey, model, prompt, imageBase64, mime
     },
     body: JSON.stringify({
       model: model || "gpt-5.4-nano",
-      max_completion_tokens: 600,
+      max_completion_tokens: 800,
       messages: [
         {
           role: "user",
