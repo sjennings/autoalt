@@ -21,6 +21,12 @@ That's the whole UI. There's no streaming, no preview, no review step — it jus
 
 API requests go directly from your browser to the provider you picked. Nothing routes through any third party. You can swap the model name in Settings if you want a beefier or cheaper one.
 
+## Which one should I pick?
+
+**For most people, the answer is Google Gemini.** Generating alt text for one image is on the order of a few hundredths of a cent at frontier-model prices, and Google's free tier is more than generous enough to cover any reasonable amount of social-media posting at zero dollars. You will not run out. Anthropic and OpenAI are both excellent and similarly cheap if you'd rather give them your business — Anthropic's Claude Haiku 4.5 in particular tends to be the sharpest at OCR on dense or hard-to-read images. Either way, you're talking pocket change.
+
+**Ollama is the privacy-or-bust option, not the budget option.** It's tempting to assume that "free local model" beats "fractions of a cent," but in practice the small vision models Ollama can run on consumer hardware — `gemma4:e2b`, `qwen2-vl`, `llava`, etc. — produce noticeably more inconsistent results than frontier models. They miss text, hallucinate text that isn't there, and make worse judgment calls about what's worth describing. They're also 3–4× slower (see the Ollama section). The right reasons to choose Ollama are: you genuinely need your images to never leave your machine, or you're offline, or you enjoy tinkering. If your goal is "cheap and good," use Gemini's free tier instead.
+
 ## Install
 
 The extension isn't on the Chrome Web Store — install it as an unpacked extension:
@@ -46,7 +52,12 @@ Open Settings via the toolbar icon → **Settings**, or from `chrome://extension
 
 ## Using Ollama (local, free)
 
-Ollama is the free, fully-local option. It runs the vision model on your own GPU/Neural Engine, so nothing about your image ever leaves your machine. The trade-off is speed: in testing on an **M4 Max Mac Studio**, Gemma via Ollama took roughly **3–4× as long** to generate alt text as the cloud frontier models (Anthropic, OpenAI, Google). Still very usable — just don't expect snappy. On lesser hardware it'll be slower still.
+Ollama is the fully-local option. It runs the vision model on your own GPU/Neural Engine, so nothing about your image ever leaves your machine. There are two real trade-offs:
+
+- **Speed.** In testing on an **M4 Max Mac Studio**, Gemma via Ollama took roughly **3–4× as long** to generate alt text as the cloud frontier models. Still usable — just don't expect snappy. On lesser hardware it'll be slower still.
+- **Quality.** The vision models small enough to run on consumer hardware — `gemma4:e2b`, `qwen2-vl`, `llava`, `llama3.2-vision` — are dramatically less capable at OCR and image reasoning than frontier cloud models. Expect occasional missed text, hallucinated text, awkward phrasing, and worse judgment about what's worth describing. They're fine for casual use; they're not a like-for-like substitute for Gemini/Claude/GPT.
+
+Pick Ollama because you want full local privacy or because you're offline — not because you're trying to save money. See the "Which one should I pick?" section above for the cost reality check.
 
 Pull a vision-capable model first:
 
@@ -146,7 +157,7 @@ The ID stays stable for an unpacked extension as long as you don't move the fold
 - **Bluesky's DOM is unstable.** If a Bluesky update breaks the **✨ Auto** button or the alt-text fill, the selectors are all in [`src/content.js`](src/content.js) — text-matching the `+ ALT` button rather than relying on `data-testid` (because Bluesky doesn't expose a stable one for the alt UI). File an issue or open a PR.
 - **Only `https://bsky.app/*`** is matched. If you use a self-hosted Bluesky frontend, add it to `content_scripts.matches` and `host_permissions` in [`manifest.json`](manifest.json).
 - **Free tiers have tight rate limits.** A 429 from your provider isn't AutoAlt's fault — that's just where the cheap tier tops out.
-- **Ollama's vision models vary wildly** in OCR quality. `gemma4:e2b` and `qwen2-vl` tend to handle text well; `llava` is hit-or-miss for transcription.
+- **Ollama vision models are inconsistent.** Even the best small open models are well behind frontier cloud models on OCR accuracy and image reasoning. Expect occasional misreads. If you find yourself fighting bad output, switch to Gemini (free tier covers most users).
 - **`gpt-5.4-nano` is the OpenAI default** but if your account doesn't have access to it, the API will 404 and you should swap to whatever nano/mini variant you do have.
 
 ## File layout
