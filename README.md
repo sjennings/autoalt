@@ -31,6 +31,8 @@ Provider, model, prompt, and the optional attribution footer are all configurabl
 
 API requests go directly from your browser to the provider you picked. Nothing routes through any third party. You can swap the model name in Settings if you want a beefier or cheaper one.
 
+> **Note on Anthropic:** A **Claude Pro or Claude Max subscription does not work here.** Those are consumer chat plans for [claude.ai](https://claude.ai) and Claude Code — they don't include API access. AutoAlt needs an API key from the [Anthropic Console](https://console.anthropic.com/settings/keys), which is billed separately (pay-as-you-go, usually pennies). The same distinction applies to OpenAI: a ChatGPT Plus subscription is not an OpenAI API key.
+
 ## Which one should I pick?
 
 **For most people, the answer is Google Gemini.** Generating alt text for one image is on the order of a few hundredths of a cent at frontier-model prices, and Google's free tier is more than generous enough to cover any reasonable amount of social-media posting at zero dollars. You will not run out. Anthropic and OpenAI are both excellent and similarly cheap if you'd rather give them your business — Anthropic's Claude Haiku 4.5 in particular tends to be the sharpest at OCR on dense or hard-to-read images. Either way, you're talking pocket change.
