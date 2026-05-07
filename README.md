@@ -46,7 +46,15 @@ API requests go directly from your browser to the provider you picked. Nothing r
 
 ## Install
 
-The extension isn't on the Chrome Web Store — install it as an unpacked extension:
+**The easiest way: install from the Chrome Web Store.**
+
+👉 **[AutoAlt on the Chrome Web Store](https://chromewebstore.google.com/detail/autoalt-alt-text-for-bsky/omknfaoaohkppapabnbihjdlallgkkco)**
+
+Click **Add to Chrome**, and the Settings page opens automatically on first install. Pick your provider, paste your API key, click **Save settings**, then head to https://bsky.app, start a post, attach an image, and click the **✨ Auto** button.
+
+### Or: install as an unpacked extension (for development)
+
+If you want to hack on the code, run a local build, or you're offline:
 
 1. Download or clone this folder somewhere stable on your machine.
 2. Open Chrome and go to `chrome://extensions`.
